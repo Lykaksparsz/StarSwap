@@ -23,8 +23,8 @@ Simply follow the instructions given when running the batch program.
 
 ## Liscensing:
 
-StarSwap currently does not have a liscense.
+StarSwap uses the GNU General Public License (Version 3), which can be found [here](http://www.gnu.org/licenses/).
 
 ## Credits
 
-Built from scratch by [Wisty](https://github.com/wistlyr), with much love to the [DFS Community](http://steamcommunity.com/groups/Dispenz0rsFunServer), and with help from the [/r/undertale Discord](http://discord.gg/undertale) .
+Built from scratch by [Wisty](https://github.com/wistlyr), with much love to the [DFS Community](http://steamcommunity.com/groups/Dispenz0rsFunServer), and with help from the [/r/undertale Discord](http://discord.gg/undertale).
