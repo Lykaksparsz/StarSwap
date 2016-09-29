@@ -27,4 +27,4 @@ StarSwap currently does not have a liscense.
 
 ## Credits
 
-Built from scratch by [Wisty](https://github.com/wistlyr).
+Built from scratch by [Wisty](https://github.com/wistlyr), with much love to the [DFS Community](http://steamcommunity.com/groups/Dispenz0rsFunServer), and with help from the [/r/undertale Discord](http://discord.gg/undertale) .
