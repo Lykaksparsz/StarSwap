@@ -21,11 +21,7 @@ StarSwap requires:
 
 ## Download
 
-To download the latest StarSwap release, choose your flavor:
-
-Stable | Beta
------------- | -------------
-[Download](https://github.com/wistlyr/StarSwap/releases/latest) | To Be Made
+Download the latest StarSwap release [here](https://github.com/wistlyr/StarSwap/releases/latest).
 
  
 ## Installation
