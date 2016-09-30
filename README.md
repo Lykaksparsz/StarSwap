@@ -16,6 +16,15 @@ StarSwap can:
 StarSwap requires:
 * A Windows PC that is Windows Vista or higher. (Sorry Windows XP users!)
 * A Steam based installation of Starbound, with mods installed through Steam Workshop.
+
+## Download
+
+To download the latest StarSwap release, choose your flavor:
+
+Stable | Beta
+------------ | -------------
+[Download](https://github.com/wistlyr/StarSwap/archive/master.zip) | To Be Made
+
  
 ## Installation
 
@@ -29,7 +38,7 @@ To install properly, StarSwap requires:
 
 To "Swap" between Modded and Vanilla, simply choose Option 1 from the main menu.
 
-## Liscensing:
+## Liscensing
 
 StarSwap uses the GNU General Public License (Version 3), which can be found [here](http://www.gnu.org/licenses/).
 
