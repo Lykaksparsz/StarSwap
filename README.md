@@ -1,5 +1,4 @@
-# StarSwap 
-#### ~ Version 1.0.0 ~
+# **StarSwap** ~ Version 1.0.0 ~
 
 StarSwap is a batch program to swap and backup Vanilla/Modded Starbound saves. (Steam only!)
 
