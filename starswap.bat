@@ -27,7 +27,7 @@ set vanillasave=%APPDATA%\StarSwap\vanillasave
 set modsave=%APPDATA%\StarSwap\modsave
 set backup=%APPDATA%\StarSwap\backups
 set ssdata=%APPDATA%\StarSwap
-set ver=1.0.0
+set ver=1.1.0
 IF EXIST "%ProgramFiles(x86)%" goto:64bit
 IF NOT EXIST "%ProgramFiles(x86)%" goto:32bit
 
@@ -272,7 +272,7 @@ goto:main
 cls
 color 07
 echo STARSWAP - Swap between your Vanilla/Modded saves easily.
-echo Version %ver% - Current state is %state%. System architecture is %sysarch%.
+echo Version %ver% - Current state is %state%.
 echo [1] Run StarSwap to %notstate%.
 echo [2] Backup loaded/unloaded saves, or mods.
 echo [3] Settings.
@@ -293,19 +293,21 @@ cls
 echo STARSWAP Settings - Version %ver% - Current state is %state%.
 echo [1] Open StarSwap data folder.
 echo [2] Launch/Kill wsModMonitor.
-echo [3] Return to Menu.
+echo [3] Uninstall StarSwap. (UNFINISHED)
+echo [4] Return to Menu.
 set /p settingsPick=Selected option:
 if "%settingsPick%"=="1" goto:openDataFolder
 if "%settingsPick%"=="2" goto:utilwsModMonitor
-if "%settingsPick%"=="3" goto:premain
-if "%settingsPick%"=="4" goto:debugMenu
+if "%settingsPick%"=="3" goto:uninstPre
+if "%settingsPick%"=="4" goto:premain
+if "%settingsPick%"=="5" goto:debugMenu
 if "%settingsPick%"=="" goto:settings
 goto:settings
 
 :debugMenu
 set "debugPick=="
 cls
-echo STARSWAP Debug Menu - Version %ver% - Current state is %state%.
+echo STARSWAP Debug Menu - Version %ver% - Current state is %state%. System architecture is %sysarch%.
 echo [1] Manually switch states.
 echo [2] Manually enter a command.
 echo [3] Return to Settings.
@@ -393,7 +395,6 @@ tasklist /FI "WINDOWTITLE eq Administrator:  StarSwap wsModMonitor" 2>NUL | find
 if "%ERRORLEVEL%"=="0" goto:utilwsModMonitorKill
 goto:utilwsModMonitorLaunch
 
-
 :utilwsModMonitorLaunch
 START "wsModMonitor" "%APPDATA%\StarSwap\wsModMonitor.bat"
 goto:settings
@@ -401,6 +402,55 @@ goto:settings
 :utilwsModMonitorKill
 TASKKILL /FI "WINDOWTITLE eq Administrator:  StarSwap wsModMonitor"
 goto:settings
+
+:uninstPre
+call:readState
+if %state%==vanilla goto:errorUninstVanilla
+goto:uninstallAsk
+
+:uninstallAsk
+set "confirm=="
+cls
+echo ~[?]~ Are you sure you want to uninstall StarSwap?
+echo [1] Yes
+echo [2] No
+set /p confirm=Selected option:
+if %confirm%==1 goto:uninstallDataExportPre
+if %confirm%==2 goto:settings
+
+:uninstallDataExportPre
+cls
+echo ~[?]~ Where would you like to export StarSwap's data?
+echo   Example:
+echo       C:\Users\username\Documents\StarSwapData
+set /p exportloc=Location of directory:
+cls
+echo ~[?]~ Is this location correct?
+echo %exportloc%
+echo [1] Yes
+echo [2] No
+set /p confirm=Selected option:
+if "%confirm%"=="1" goto:uninstallDataExport
+if "%confirm%"=="2" goto:uninstallDataExportPre
+if "%confirm%"=="" goto:uninstallDataExportPre
+goto:uninstallDataExportPre
+
+:uninstallDataExport
+cls
+echo ~[=]~ StarSwap will now uninstall itself...
+TIMEOUT /T 5 /NOBREAK
+color 0E
+rmdir /S /Q "%ssdata%\modsave"
+del /Q "%APPDATA%\StarSwap\state.txt"
+move /Y "%APPDATA%\StarSwap\wsModMonitor.bat" "%~dp0"
+robocopy "%ssdata%" "%exportloc%" /MOVE /E /NJH /NJS
+rmdir /S /Q "%ssdata%"
+color 07
+cls
+echo ~[!]~ StarSwap has successfully uninstalled itself.
+echo ~[?]~ Thanks so much for using StarSwap!
+pause
+goto:cleanExit
 
 :: End Menu Functions
 
@@ -1286,6 +1336,7 @@ echo ~[!]~ An error has occured.
 echo ~[!]~ Error: StarSwap cannot find wsModMonitor. Did you move it?
 echo ~[?]~ Please return it to %~dp0, and press any key to try again.
 pause
+color 07
 goto:setupwsModMonitor
 
 :errorwsModded
@@ -1294,6 +1345,16 @@ color 0C
 echo ~[!]~ An error has occured.
 echo ~[!]~ Error: StarSwap cannot launch wsModMonitor if the current state is Modded.
 echo ~[?]~ Please swap to Vanilla before launching wsModMonitor.
+pause
+color 07
+goto:settings
+
+:errorUninstVanilla
+cls
+color 0C
+echo ~[!]~ An error has occured.
+echo ~[!]~ Error: StarSwap cannot uninstall itself if the current state is Vanilla.
+echo ~[?]~ Please swap to Modded before uninstalling.
 pause
 color 07
 goto:settings

@@ -5,7 +5,13 @@
 :: If you're looking at this first before installing StarSwap,
 :: leave this file in the same directory as StarSwap so it can install it during Setup.
 
+:: Designed for use with StarSwap Versions later than Version 1.0.0.
+:: Last updated during Version 1.1.0.
+
 @echo off
+IF NOT EXIST "%APPDATA%\StarSwap\state.txt" goto:errorNoState
+set /p state=<"%APPDATA%\StarSwap\state.txt"
+if %state%==modded goto:errorwsModded
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
 if '%errorlevel%' NEQ '0' (
 echo ~[!]~ StarSwap wsModMonitor requires administrator priviledges to make changes to Starbound's storage.
@@ -44,4 +50,21 @@ echo ~[=]~ StarSwap wsModMonitor will now monitor your workshop storage for upda
 echo ~[!]~ Please leave this open. StarSwap will close it when your mods are reloaded.
 TIMEOUT /T 10 /NOBREAK
 color 0E
-robocopy "%steamdir%\steamapps\workshop\content\211820" "%modsave%\mods" /MOVE /E /NJH /NJS /XO /MON:1 /MOT:1
+robocopy "%steamdir%\steamapps\workshop\content\211820" "%modsave%\mods" /MOVE /E /NJH /NJS /XO /MON:1
+
+:errorwsModded
+cls
+color 0C
+echo ~[!]~ An error has occured.
+echo ~[!]~ Error: wsModMonitor cannot run if the current state is Modded.
+echo ~[?]~ Please swap to Vanilla before launching wsModMonitor.
+pause
+color 07
+goto:settings
+
+:errorNoState
+cls
+color 0C
+echo ~[!]~ An error has occured.
+echo ~[!]~ Error: wsModMonitor cannot read StarSwap's current state.
+echo ~[?]~ Please run StarSwap before launching wsModMonitor.
