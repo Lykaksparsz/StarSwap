@@ -16,7 +16,7 @@ StarSwap can:
 
 StarSwap requires:
 * A Windows PC that is Windows Vista or higher. (Sorry Windows XP users!)
-* A Steam based installation of Starbound, with mods installed through Steam Workshop only.
+* A Steam based installation of Starbound **in it's default directory**, with mods installed through Steam Workshop only.
 
 **Do not use this tool if you have both Steam Workshop mods and directly downloaded mods.**
 
