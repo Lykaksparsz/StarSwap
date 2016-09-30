@@ -1,4 +1,4 @@
-# **StarSwap** ~ Version 1.0.0 ~
+# **StarSwap** ~ Version 1.0.0
 
 StarSwap is a batch program to swap and backup Vanilla/Modded Starbound saves. (Steam only!)
 
@@ -7,9 +7,9 @@ StarSwap is a batch program to swap and backup Vanilla/Modded Starbound saves. (
 StarSwap can:
 * Swap between a Vanilla/Modded Starbound save.
 * Load and unload installed mods. (Currently Steam Workshop only.)
-* Ask if you would like to backup your mods.
-* Backup mods and saves on demand.
 * Monitor the Steam Workshop for mod updates, and apply them.
+* Ask if you would like to backup your mods/saves, without being intrusive.
+* Backup mods and saves on demand.
  
 ## Requirements
 
@@ -22,6 +22,12 @@ StarSwap requires:
 Simply follow the instructions given when running the Batch program for the first time.
 To install properly, StarSwap requires:
 * The dependency "wsModMonitor.bat" in the same folder as StarSwap.bat.
+* Access to "robocopy", which has been included with Windows since Windows Vista.
+* Administrator permissions, to make changes to Starbound's storage.
+
+## Usage
+
+To "Swap" between Modded and Vanilla, simply choose Option 1 from the main menu.
 
 ## Liscensing:
 
