@@ -9,6 +9,7 @@ StarSwap can:
 * Load and unload installed mods. (Currently Steam Workshop only.)
 * Ask if you would like to backup your mods.
 * Backup mods and saves on demand.
+* Monitor the Steam Workshop for mod updates, and apply them.
  
 ## Requirements
 
