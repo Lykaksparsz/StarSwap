@@ -25,7 +25,7 @@ To download the latest StarSwap release, choose your flavor:
 
 Stable | Beta
 ------------ | -------------
-[Download](https://github.com/wistlyr/StarSwap/archive/master.zip) | To Be Made
+[Download](https://github.com/wistlyr/StarSwap/releases/latest) | To Be Made
 
  
 ## Installation
